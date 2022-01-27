@@ -1,0 +1,41 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+
+<body>
+    <div class="container">
+        <% if (successMessage) { %>
+        <div class="user-message user-message--success"><%= successMessage %></div>
+        <% } %>
+        <% if( friendRequests.length > 0) { %>
+        <div class="container">
+            <table class="w3-table">
+                <tr>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                <% for(let request of friendRequests)  { %>
+                <tr>
+                    <td><%= request.username %></td>
+                    <td><%= request.email %></td>
+                    <td>
+                        <form action="/accept-request/<%= request.id %>" method="post">
+                            <button class="btn" type="submit">Accept Request</button>
+                        </form>
+                        <form action="/decline-request/<%= request.id %>" method="post">
+                            <button class="btn btn-danger" type="submit">Decline Request</button>
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+                <% }  else {%>
+                <h1>No Friend Request Yet!</h1>
+                <% } %>
+            </table>
+        </div>
+    </div>
+        <%- include('../includes/footer.ejs') %>
+        <script src="main.js"></script>
+    </body>
+
+</html>

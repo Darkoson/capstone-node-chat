@@ -1,0 +1,46 @@
+<header class="main-header">
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+            <% if (!isAuthenticated) { %>
+                <li class="main-header__item">
+                    <a class="<%= path === '/' ? 'active' : '' %>" href="/">Chat App</a>
+                </li>
+            <% } else { %>
+                <li class="main-header__item">
+                    <a class="<%= path === '/' ? 'active' : '' %>">Welcome,<b> <%= username %></b></a>
+                </li>
+            <% } %>
+        </ul>
+        <ul class="main-header__item-list">
+            <% if (!isAuthenticated) { %>
+                <li class="main-header__item">
+                    <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Signup</a>
+                </li>
+            <% } else { %>
+                <!-- <li class="main-header__item">
+                    <a class="<%= path === '/chat' ? 'active' : '' %>" href="/chat">Chat</a>
+                </li> -->
+                <li class="main-header__item">
+                    <a class="<%= path === '/chats' ? 'active' : '' %>" href="/chats">Chats</a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/friendrequests' ? 'active' : '' %>" href="/friendrequests">Friend Requests</a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/friends' ? 'active' : '' %>" href="/friends">Friends</a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/makefriends' ? 'active' : '' %>" href="/makefriends">Make Friends</a>
+                </li>
+                <li class="main-header__item">
+                    <form action="/logout" method="get">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+</header>

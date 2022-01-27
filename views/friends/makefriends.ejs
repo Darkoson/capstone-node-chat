@@ -1,0 +1,35 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+
+<body>
+    <div class="container">
+        <% if (successMessage) { %>
+        <div class="user-message user-message--success"><%= successMessage %></div>
+        <% } %>
+        <% if( users.length > 0) { %>
+        <div class="container">
+            <table class="w3-table">
+                <tr>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                <% for(let user of users)  { %>
+                <tr>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <td>
+                        <form action="/makefriends/<%= user.id %>" method="post">
+                            <button class="btn" type="submit">Send a friend request</button>
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+                <% } %>
+            </table>
+        </div>
+    </div>
+    <%- include('../includes/footer.ejs') %>
+</body>
+
+</html>
